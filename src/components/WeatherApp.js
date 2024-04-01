@@ -1,21 +1,20 @@
-import React from 'react';
-import './App.css';
+import React from "react";
 
-const WeatherApp = () => {
-  const weatherData = {
-    temperature: 25,
-    conditions: "Sunny",
-  };
-
-  const threshold = 20;
-  const color = weatherData.temperature > threshold ? "red":"blue";
+const WeatherApp = ({ weather }) => {
+  const { temperature, conditions } = weather;
+  const isAboveThreshold = temperature > 20;
 
   return (
-    <span className="weather-container">
-      <h2>Weather App</h2>
-      <p style={{ color }}>Temperature: {weatherData.temperature}</p>
-      <p>Weather Conditions: {weatherData.conditions}</p>
-    </span>
+    <div>
+      <h1>Weather App</h1>
+      <p>
+         Temperature:{" "}
+         <span style={{ color: isAboveThreshold ? "red" : "blue" }}>
+             {temperature}
+        </span>
+      </p>
+      <p>Conditions: {conditions}</p>
+    </div>
   );
 };
 
